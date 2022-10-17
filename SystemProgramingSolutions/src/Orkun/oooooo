@@ -1,0 +1,18 @@
+Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter the product key you want to see:");
+        String givenKey = scan.nextLine();
+
+        if(yearlyTotal.containsKey(givenKey)){
+            System.out.println("For the product "+ givenKey+":");
+            System.out.println("In-store sales: " + yearlyTotal.get(givenKey).get(0) + " TL");
+            System.out.println("Online sales: " + yearlyTotal.get(givenKey).get(1) + " TL");
+            System.out.println("Total sales: " + (yearlyTotal.get(givenKey).get(0) + yearlyTotal.get(givenKey).get(1)) + " TL");
+        } else if(givenKey.equals("X")){
+            int sum = 0;
+            for (Map.Entry<String, ArrayList<Integer>> entry: yearlyTotal.entrySet()) {
+                sum += entry.getValue().get(0) + entry.getValue().get(1);
+            }
+            System.out.println("The sum of the all products:"+ sum );
+        }else {
+            System.out.println("Product " + givenKey + " does not exist!");
+        }
